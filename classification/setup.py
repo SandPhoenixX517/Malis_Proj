@@ -1,3 +1,4 @@
+import os
 # Setup data for three cities which are Columbus, Potsdam, Selwyn. In order to do the same for the other three cities just copy paste the code and modify the files names and the URLs
 os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/detection/COWC_Detection_Columbus_CSUAV_AFRL.tbz")
 
