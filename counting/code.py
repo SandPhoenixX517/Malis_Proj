@@ -47,31 +47,11 @@ out_features = 2
 model.fc = nn.Linear(in_features,out_features)
 model_loader = torch.load("./classification_model",map_location=torch.device('cpu'))
 model.load_state_dict(model_loader['model_state_dict'])
-out_features = 64
+out_features = 65
 model.fc = nn.Linear(in_features,out_features)
 #model_loader = torch.load("./counting_model",map_location=torch.device('cpu'))
 #model.load_state_dict(model_loader['model_state_dict'])
 model.to(device)
-'''
-os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Columbus_CSUAV_AFRL.tbz")
-os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Potsdam_ISPRS.tbz")
-#os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Selwyn_LINZ.tbz")
-#os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Toronto_ISPRS.tbz")
-#os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Vaihingen_ISPRS.tbz")
-#os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Utah_AGRC.tbz")
-
-
-os.system("tar -xvjf ./COWC_Counting_Columbus_CSUAV_AFRL.tbz")
-os.system("tar -xvjf ./COWC_Counting_Potsdam_ISPRS.tbz")
-os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_test_list_64_class.txt.bz2")
-os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_train_list_64_class.txt.bz2")
-os.system("bzip2 -d COWC_test_list_64_class.txt.bz2")
-os.system("bzip2 -d COWC_train_list_64_class.txt.bz2")
-os.system("cp COWC_test_list_64_class.txt ./Columbus_CSUAV_AFRL/")
-os.system("cp COWC_train_list_64_class.txt ./Potsdam_ISPRS/")
-os.system("cp COWC_train_list_64_class.txt ./Columbus_CSUAV_AFRL/")
-os.system("cp COWC_test_list_64_class.txt ./Potsdam_ISPRS/")
-'''
 Path_columbus ="Columbus_CSUAV_AFRL"
 nbr_img_train_columbus = 7595
 nbr_img_test_columbus = 2110
