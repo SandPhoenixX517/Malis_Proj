@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -40,7 +37,7 @@ LEARNING_RATE = 0.01
 lmbda=0.1
 ITERATIONS = 1
 EPOCHS = 1
-Image_size = 256 # This one is to be changed with the image size that we want to train with: (Image_size X Image_size)
+Image_size = 256 # (Image_size X Image_size)
 model = torch.hub.load('pytorch/vision:v0.6.0', 'googlenet', pretrained=True)
 in_features = model.fc.in_features
 out_features = 2
@@ -158,11 +155,9 @@ testing_datasets.append(test_dataset)
 test_dataset = torch.utils.data.ConcatDataset(testing_datasets)
 
 test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False)
-#torch.save({'model_state_dict':model.state_dict(),},'./counting_model')
 
-#print(test(model, test_dataloader))
-for i in range(300):
-    model = train(model, train_dataloader,epochs=1, lr=LEARNING_RATE)
-    #print(test(model, train_dataloader))
-    print(test(model, test_dataloader))
-    torch.save({'model_state_dict':model.state_dict(),},'./counting_model')
+model = train(model, train_dataloader,epochs=200, lr=LEARNING_RATE)
+# save the trained model
+torch.save({'model_state_dict':model.state_dict(),},'./counting_model')
+print(test(model, test_dataloader))
+
