@@ -2,6 +2,8 @@ import os
 
 os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Columbus_CSUAV_AFRL.tbz")
 os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Potsdam_ISPRS.tbz")
+
+# this are for the other images.
 #os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Selwyn_LINZ.tbz")
 #os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Toronto_ISPRS.tbz")
 #os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/counting/COWC_Counting_Vaihingen_ISPRS.tbz")
