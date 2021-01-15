@@ -111,52 +111,7 @@ class Dataset(torch.utils.data.Dataset):
         
         return [sample.float(), target]
 
-"""### Loading Dataset
-In this phase, we will only consider using the portion of dataset captured from Colombus city. The whole dataset will be used when everything is set correctly.
-"""
-'''
-#!wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/detection/COWC_Detection_Toronto_ISPRS.tbz
-os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/detection/COWC_Detection_Columbus_CSUAV_AFRL.tbz")
-#!wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/detection/COWC_Detection_Utah_AGRC.tbz
 
-os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/detection/COWC_Detection_Potsdam_ISPRS.tbz")
-os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/detection/COWC_Detection_Selwyn_LINZ.tbz")
-#!wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/detection/COWC_Detection_Vaihingen_ISPRS.tbz
-
-os.system("tar -xvjf ./COWC_Detection_Columbus_CSUAV_AFRL.tbz")
-os.system("tar -xvjf ./COWC_Detection_Potsdam_ISPRS.tbz")
-os.system("tar -xvjf ./COWC_Detection_Selwyn_LINZ.tbz")
-#!tar -xvjf ./COWC_Detection_Toronto_ISPRS.tbz
-#!tar -xvjf ./COWC_Detection_Utah_AGRC.tbz
-#!tar -xvjf ./COWC_Detection_Vaihingen_ISPRS.tbz
-
-
-os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/detection/COWC_test_list_detection.txt.bz2")
-os.system("wget https://gdo152.llnl.gov/cowc/download/cowc/datasets/patch_sets/detection/COWC_train_list_detection.txt.bz2")
-os.system("bzip2 -d COWC_test_list_detection.txt.bz2")
-os.system("bzip2 -d COWC_train_list_detection.txt.bz2")
-os.system("cp COWC_test_list_detection.txt ./Columbus_CSUAV_AFRL/")
-os.system("cp COWC_test_list_detection.txt ./Potsdam_ISPRS/")
-os.system("cp COWC_test_list_detection.txt ./Selwyn_LINZ/")
-os.system("cp COWC_train_list_detection.txt ./Selwyn_LINZ/")
-os.system("cp COWC_train_list_detection.txt ./Potsdam_ISPRS/")
-os.system("cp COWC_train_list_detection.txt ./Columbus_CSUAV_AFRL/")
-# Columbous cardinalities
-'''
-'''
-nbr_img_train_columbus =  os.system("ls ./Columbus_CSUAV_AFRL/train | wc -l")
-print("hello "+str(nbr_img_train_columbus))
-#nbr_img_train_columbus = int(nbr_img_train_columbus[0])
-nbr_img_test_columbus =  os.system("ls ./Columbus_CSUAV_AFRL/test | wc -l")
-nbr_img_test_columbus = int(nbr_img_test_columbus[0])
-print("nbr_img_train_columbus = "+str(nbr_img_train_columbus))
-print("nbr_img_test_columbus = "+str(nbr_img_test_columbus))
-# Postdam Cardinalities
-nbr_img_train_postdam =  os.system("ls ./Potsdam_ISPRS/train | wc -l")
-nbr_img_train_postdam = int(nbr_img_train_postdam[0])
-nbr_img_test_postdam =  os.system("ls ./Potsdam_ISPRS/test | wc -l")
-nbr_img_test_postdam = int(nbr_img_test_postdam[0])
-'''
 nbr_img_train_columbus = 6966
 nbr_img_test_columbus = 2050
 nbr_img_train_postdam  = 10429
@@ -165,11 +120,6 @@ nbr_img_train_selwyn = 16287
 nbr_img_test_selwyn = 4942
 print("nbr_img_train_postdam = "+str(nbr_img_train_postdam))
 print("nbr_img_test_postdam = "+str(nbr_img_test_postdam))
-# Postdam Cardinalities
-#nbr_img_train_selwyn =  os.system("ls ./Selwyn_LINZ/train | wc -l")
-#nbr_img_train_selwyn = int(nbr_img_train_selwyn[0])
-#nbr_img_test_selwyn =  os.system("ls ./Selwyn_LINZ/test | wc -l")
-#nbr_img_test_selwyn = int(nbr_img_test_selwyn[0])
 print("nbr_img_train_selwyn = "+str(nbr_img_train_selwyn))
 print("nbr_img_test_selwyn = "+str(nbr_img_test_selwyn))
 # For the other images, I am not going to treat them for now. Let's see how much accuracy do we reach.
@@ -225,12 +175,6 @@ model = train(model, train_dataloader,epochs=30, lr=LEARNING_RATE)
 print(test(model, test_dataloader))
 
 torch.save({'model_state_dict':model.state_dict(),},'./classification_model')
-
-"""### Training for Detection
-
-### Training for Counting
-"""
-
 
 
 
